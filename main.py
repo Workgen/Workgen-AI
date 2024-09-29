@@ -34,6 +34,11 @@ def generate_quiz(topic, difficulty_level, num_questions):
 def save_questions_to_pdf(questions, pdf_filename="quiz_questions.pdf",topic = "Generated"):
     topic = topic.upper()
     pdf = FPDF()
+
+    pdf.set_left_margin(20)
+    pdf.set_right_margin(20)
+    pdf.set_top_margin(20)
+
     pdf.add_page()
 
     # title font
@@ -46,7 +51,8 @@ def save_questions_to_pdf(questions, pdf_filename="quiz_questions.pdf",topic = "
 
     # Write questions to PDF
     for question in questions:
-        pdf.multi_cell(0, 10, question)
+        pdf.set_x(20)
+        pdf.multi_cell(180, 10, question)
 
     pdf.output(pdf_filename)
     print(f"Quiz questions saved to {pdf_filename}")
@@ -54,6 +60,11 @@ def save_questions_to_pdf(questions, pdf_filename="quiz_questions.pdf",topic = "
 def save_answers_to_pdf(answers, pdf_filename="quiz_answers.pdf"):
     # Initialize FPDF object
     pdf = FPDF()
+
+    pdf.set_left_margin(20)
+    pdf.set_right_margin(20)
+    pdf.set_top_margin(20)
+
     pdf.add_page()
 
     pdf.set_font('Arial', 'B', 16)
@@ -64,7 +75,8 @@ def save_answers_to_pdf(answers, pdf_filename="quiz_answers.pdf"):
 
     # Write answers to PDF
     for answer in answers:
-        pdf.multi_cell(0, 10, answer)
+        pdf.set_x(20)
+        pdf.multi_cell(180, 10, answer)
 
     pdf.output(pdf_filename)
     print(f"Answer key saved to {pdf_filename}")
